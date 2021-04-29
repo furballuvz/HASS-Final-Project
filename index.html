@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HASS02.526 Final Coursework</title>
+    <meta charset="utf-8" />
+    
+    <style>
+
+    @import url(https://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100);
+    
+    body {
+        font-family: "Roboto", helvetica, arial, sans-serif;
+        display: block;
+        margin: auto;
+        width: 100%;
+        text-align: center;
+    }
+    h3 {
+       margin: 0px;
+       font-size: 30px;
+       font-weight: 400;
+       font-style:normal;
+       text-transform:uppercase;
+    }
+    h4 {
+       margin: 2px;
+       font-size: 20px;
+       font-weight: 400;
+       font-style:normal;
+       text-transform:uppercase;
+    }
+    h5 {
+       margin: 0px;
+       padding-top: 60px;
+       padding-bottom: 10px;
+       font-size: 20px;
+       font-weight: 200;
+       font-style:normal;
+    }
+    h6 {
+       font-size: 20px;
+       font-weight: 300;
+       font-style:normal;
+       color:#919191;
+    }
+    p {
+       color: #404040;
+       font-size: 16px;
+       font-style:normal;
+    }
+     .h3-left{
+       padding: 20px;
+       margin-left:20px;
+       width: 95%;
+       font-size: 50px;
+       font-weight: 400;
+       font-style:normal;
+       color: #43688a;
+       text-transform:uppercase;
+       text-align: left;
+       position: absolute;
+       z-index: 2;
+    }
+     .h3-right{
+       padding: 20px;
+       width: 95%;
+       font-size: 50px;
+       font-weight: 400;
+       font-style:normal;
+       color: #43688a;
+       text-transform:uppercase;
+       text-align: right;
+       z-index: 2;
+    }
+    .container{
+        padding: 30px 30px 50px;
+    }
+    .header{
+        height: 900px;
+        color: #fff;
+        background: #2f313a url(./images/skyline.svg);
+        background-size: 100%;
+        background-position: bottom;
+        background-repeat: repeat-x;
+    }
+    .sect_1{
+        height: 800px;
+        background: #3f566b;
+    }
+    .sect_2{
+        height: 1300px;
+        background: #dedede;
+    }
+    .sect_3{
+        height: 1600px;
+        background: #878e9c;
+    }
+    .sect_4{
+        height: 800px;
+        background: #45494f;
+    }
+    .float_text{
+       padding: 20px;
+       width: 650px;
+       font-size: 20px;
+       font-weight: 300;
+       font-style:normal;
+       color: #919191;
+       z-index: 2;
+       position: relative;
+       top: 50%;
+       left: 50%;
+       margin-top: -1150px;
+    }
+    .float_text2{
+       padding: 20px;
+       width: 780px;
+       font-size: 20px;
+       font-weight: 300;
+       font-style:normal;
+       color: #ded6e2;
+       z-index: 2;
+       position: relative;
+       top: 50%;
+       left: 50%;
+       margin-top: -500px;
+    }
+   .divider {
+      width: 100%;
+      height: 10vh;
+      fill: #34363f;
+      position: absolute;
+    }
+    .divider svg {
+        position: relative;
+        display: block;
+        width: calc(100% + 1.3px);
+        height: 150px;
+    }
+
+.tooltip {
+    display:inline-block;
+    position:relative;
+    border-bottom:1px dotted #666;
+    text-align:left;
+}
+
+.tooltip h3 {margin:12px 0;}
+
+.tooltip .bottom {
+    width:800px;
+    top:40px;
+    left:50%;
+    transform:translate(-50%, 0);
+    padding:20px;
+    color:#EEEEEE;
+    background-color:#444444;
+    font-weight:normal;
+    font-size:13px;
+    border-radius:8px;
+    position:absolute;
+    z-index:99999999;
+    box-sizing:border-box;
+    box-shadow:0 1px 8px rgba(0,0,0,0.5);
+    visibility:hidden; opacity:0; transition:opacity 0.8s;
+}
+
+.tooltip:hover .bottom {
+    visibility:visible; opacity:1;
+}
+
+.tooltip .bottom img {
+    width:800px;
+    border-radius:8px 8px 0 0;
+    position: relative;
+    top: -20px;
+    left: -20px;
+}
+
+.tooltip .bottom i {
+    position:absolute;
+    bottom:100%;
+    left:50%;
+    margin-left:-12px;
+    width:24px;
+    height:12px;
+    overflow:hidden;
+}
+
+.tooltip .bottom i::after {
+    content:'';
+    position:absolute;
+    width:12px;
+    height:12px;
+    left:50%;
+    transform:translate(-50%,50%) rotate(45deg);
+    background-color:#444444;
+    box-shadow:0 1px 8px rgba(0,0,0,0.5);
+}
+
+.tooltip .text-content {
+    padding:10px 20px;
+}
+
+
+
+    </style>
+    
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.19.1"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.0.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.15.1"></script>
+    <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script src="js/vis1.js"></script>
+    <script src="js/vis2.js"></script>
+    <script src="js/vis3.js"></script>
+    <script src="js/vis4.js"></script>
+    <script src="js/radar.js"></script>
+    
+    <style media="screen"></style>
+    
+  </head>
+  <body>
+  <div>
+      <section class="header">
+       <div class="radar">
+              <svg width="100" height="100" id="radar"></svg>
+          </div>
+          <h5>HASS02.526 Interactive Data Visualization</h5>
+          <h3>Analysis of changi airport's flight traffic</h3>
+          <h4>[2019 - present]</h4>
+          <h6 style="color:#919191; padding-top:450px">According to CAAS, the Aviation Industry contributes to 3% of Singapore’s GDP, provided some 119,000 job, and is one of the many drivers of growth in Singapore. 
+              <br>Prior to the global pandemic that is COVID-19, Singapore Changi Airport handled 68.3 million passenger movements, 382,000 aircraft arrivals and departures in 2019. 
+              <br>We will like to take a brief look at how Singapore manages and controls air traffic into and out of Changi airport, and then we will look at how COVID-19 has changed the game.
+          </h6>
+      </section>
+  </div>
+  <div>
+      <section class="sect_1">
+         <div class="divider">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M649.97 0L550.03 0 599.91 54.12 649.97 0z" class="shape-fill"></path>
+            </svg>
+        </div>
+        <div class="h3-right">Daily Total Flights</div>
+        <div class="container">
+            <div class="vis_1"></div>
+            <p style="padding-left:850px; color:#fff; font-size:12px"> Data retrieved from  <a href="https://flightaware.com/live/flight/WSSS">flightaware.com</a>.</p>
+            <h6><i>Zoom in to see details!</i></h6>
+            <h6>
+                 Up till May 2020, Changi saw an average of more than 1000 arrivals and departures per day, 
+                 before the drastic drop to around 100 total flights each day due to COVID-19 and closed borders. 
+                 <br>The day with the lowest traffic was April 12 2019, which was about the time Circuit Breaker started. 
+                 <br>Evidently, traffic seems to be picking up, with a Year-on-Year growth of around <b>30%</b> on 27th Apr 2020/2021. 
+                 However, at the current rate, it will take another <b>8</b> years to reach pre-COVID levels.
+            </h6>
+        </div>
+      </section>
+  </div>
+  <div>
+      <section class="sect_2">
+        <div class="divider" style="fill: #3f566b;">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M649.97 0L550.03 0 599.91 54.12 649.97 0z" class="shape-fill"></path>
+            </svg>
+        </div>
+        <div class="h3-left">Pre-Covid19</div>
+        <div class="h3-right" style="color: #bbb">Daily Arrivals <br>and Departures</div>
+        <div class="container">
+            <div class="vis_3"></div>
+            <h6><i>Click on the bar chart to see breakdown of arrivals and departures by days of the week!</i></h6>
+            <h6><b>Hourly Flight Traffic in a Day (8am to 11pm)</b>
+            <br>The peak in arrivals occurs at 6pm and 10pm, towards the tail end of the day. Departures, on the other hand, peaks right at the start of the day from 8am to 10am. 
+            <br>This shows that there is a cyclical pattern between departing and arriving aircrafts in and out of Changi Airport.
+            <br>These data is often used by air traffic controllers to plan and schedule flights on days where there is airspace restrictions.
+            </h6>
+            <div class="tooltip">
+                <p style="margin:0px; font-size: 20px;font-weight: 300;color:#919191;"><i>Find out more about air traffic during National Day!</i></p>
+                <div class="bottom" style="width:500px;">
+                    <img src="images/black_knight.jpg" style="width:500px;"/>
+                    <div class="text-content">
+                        <h3 style="text-align:right">Flight scheduling</h3>
+                        During the National Day Parade or the Air Show, where there’s often an aerial display from the RSAF, the airspace over Changi airport will not be available for safety reasons. 
+                        <br><br>As such, flights that are affected by the airspace closure will be rescheduled in advance by air traffic controllers. 
+                        <br><br>This ensures that delays will be minimised as well as an optimised flow of traffic with the given airspace constrains.
+                    </div>
+                </div>
+            </div>
+            <div class="float_text">
+                 <b>Flights per Day of the Week</b>
+                 <br>In the course of a week, Fridays and Sundays has the highest traffic. 
+                 This can be attributed to the tendency of vacationeers departing on Fridays, and returning on Sundays.
+                 <br>In general, flight traffic is well balanced across the week, maintaining it this way provides 2 key benefits:
+                 <ul>
+                    <li>Air traffic controllers have more balanced workload during each day of the week.</li>
+                    <li>Changi Airport is operating at 80-88% of maximum capacity, which is highly efficient, while ensuring congestion does not occur.</li>
+                </ul>
+                    <div class="tooltip">
+                        <i>Find out more about Changi Airport's capacity!</i>
+                        <div class="bottom">
+                            <img src="images/airport.jpg"/>
+                            <div class="text-content">
+                                <h3 style="text-align:right">Airport Capacity</h3>
+                                Congestion at airports lead to delays experienced by airlines and passengers, and cause a snowball effect of stress on ground crew, air traffic controllers and pilots.
+                                Thus, flights are carefully scheduled by air traffic controllers, by considering an airport's capacity for aircraft traffic. 
+                                <br><br>
+                                One key metric to determine airport capacity is runway occupancy time.
+                                According to ICAO, arrivals and departures are usually spaced in 2 to 3 minute intervals due to safety precautions caused by Wake Turbulence. 
+                                Therefore, a single runway can support 20 to 30 aircraft movements in an hour. 
+                                <br><br>
+                                Since Changi Airport has two runways, one runway is usually assigned for departures, while the other solely for arrivals.     
+                                Thus, Changi airport has a maximum capacity of approximately 60 arrivals and departures per hour, or a total of 960 aircraft movements in a span of 16 hours. 
+                                <br><br>
+                                Based on this data from 2019, a range of 800-880 total daily arrivals and departures are recorded. 
+                                This shows that Changi airport runs at 80-88% of maximum capacity. 
+                                The remaining 12-20% of capacity can be set aside to cater for unplanned external influences such as weather conditions (eg. Haze and Rain), aircraft emergencies, and other forms of disruption to services.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </section>
+  </div>
+  <div>
+  <section class="sect_3">
+        <div class="divider" style="fill: #dedede; z-index:5">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M649.97 0L550.03 0 599.91 54.12 649.97 0z" class="shape-fill"></path>
+            </svg>
+        </div>
+        <div class="h3-right" style="color: #8fa1bf; position: absolute">Flight Arrivals <br>by Heading</div>
+        <div class="container" style="padding: 0px">
+            <div class="vis_2"></div>
+            <div class="float_text2"><b>Flights Arrivals Grouped by Cardinal Direction</b>
+            <br>There are 4 cardinal entry “gates” for arriving aircrafts to land into Changi Airport. 
+            Each gate serves as a converging point for various air routes, which pilots fly and navigate from their various departure points to Singapore. 
+            <br>The <span style="color: #ffbb78"><b>Western gate</b></span> serves aircrafts from Malaysia, India, Africa, Middle East, Europe. 
+            Malaysia is the second most busiest direct flight arrivals to Changi. 
+            Aircrafts from India and beyond are long haul flights and usually only occur once or twice daily per airline. 
+            Thus the main contributor to the traffic that flows through the West is from Malaysia.
+            <br>The <span style="color: #1f77b4"><b>Northern gate</b></span> serves aircrafts from Thailand, Hong Kong, China, and Vietnam. 
+            This gate contributes the most to the daily capacity mainly due to the large volume of departures from China, which is also the third most busiest direct flight arrivals to Changi. 
+            An average of 40 departures from China fly into Changi on a daily basis. 
+            <br>The <span style="color: #ff7f0e"><b>Eastern gate </b></span>serves aircrafts from Philippines, Japan, Korea, East Malaysia, USA, Australia, and New Zealand. 
+            This gate has the least demand as most flights from their respective point of departures through this gate occurs once per day, unlike destinations like China, Indonesia, and Malaysia. 
+            <br>The <span style="color: #aec7e8"><b>Southern gate </b></span> <b>only</b> serves aircrafts from Indonesia. As Indonesia has the most direct flights to Singapore, thus having a dedicated point of entry would help in regulating air traffic.
+            </div>
+        </div>
+  </section>
+  </div>
+<div>
+  <section class="sect_4">
+        <div class="divider" style="fill: #878e9c; z-index:5">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M649.97 0L550.03 0 599.91 54.12 649.97 0z" class="shape-fill"></path>
+            </svg>
+        </div>
+        <div class="h3-left">Post-Covid19</div>
+        <div class="h3-right" style="color: #6e7580">Hourly Flights</div>
+        <div class="container" style="padding: 0px">
+            <div class="vis_4"></div>
+            <h6 style="margin: 0px 300px 0px 300px"><b>Impact of Covid-19</b>
+            <br>Covid-19 hit Changi Airport hard. April 2020 had a total of only 3865 aircraft arrivals and departures. 
+            <br>This is even lesser than the opening month of Changi airport, July 1981 that had 6009. 
+            <br>Since Singapore has no domestic demand for air travel, it is reliant on international traffic.
+            <br>With the international lockdowns due to COVID-19, Changi airport saw it’s lowest traffic movements ever from April 2020 to July 2020.
+            </h6>
+        </div>
+        <p style="text-align:right; color:#ddd; font-size:12px; margin-right:20px"> *Data retrieved from CAAS. <br> Done by Miao Ziyan (1000377)</p>
+  </section>
+  </div>
+    <script>
+
+      vegaEmbed('.vis_1', viz1, {"actions": false});
+      
+      vegaEmbed('.vis_2', viz2, {"actions": false})
+         .then(function(vis_param){
+             vis_param.view.addSignalListener('heading', function(signalName, e) {
+             if(typeof e.key != "undefined")
+             {
+                console.log(e.key[0]);
+             }
+         });
+    });
+      vegaEmbed('.vis_3', viz3, {"actions": false});
+      vegaEmbed('.vis_4', viz4, {"actions": false});
+      
+    </script>
+  </body>
+</html>
